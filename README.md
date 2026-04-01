@@ -64,6 +64,8 @@ Parameters: ~1.1M
 
 Training and validation accuracy converge without significant overfitting. The membrane potential heatmap shows clear differentiation between output neurons, confirming the network learns gesture-specific representations.
 
+**Context:** State-of-the-art on DVS128 Gesture (convolutional SNNs with spatial feature extraction) reaches 97% (Amir et al. 2017: 96.5% on TrueNorth; recent ConvSNN methods: 97%+). This FC baseline establishes the performance floor and isolates the contribution of spike-based temporal dynamics from spatial structure — the gap to SOTA is almost entirely explained by the FC-only architecture (see Known Limitations).
+
 ---
 
 ## Known Limitations
@@ -83,15 +85,7 @@ These are documented honestly in the notebook:
 pip install snntorch torch numpy matplotlib
 ```
 
-```bash
-# With real DVS data
-python -c "import nbformat; ..."  # or run in Jupyter
-
-# Without dataset (synthetic fallback for pipeline testing)
-# The notebook auto-detects missing data and uses synthetic DVS-style input
-```
-
-Run the notebook cell by cell, or use Kaggle/Colab with GPU.
+Run the notebook cell by cell in Jupyter, or use Kaggle/Colab with GPU. The notebook auto-detects missing data and falls back to synthetic DVS-style input for pipeline testing.
 
 ---
 
@@ -99,24 +93,28 @@ Run the notebook cell by cell, or use Kaggle/Colab with GPU.
 
 This project is part of a broader NeuroAI portfolio:
 
-- **Predictive Coding RSA** — PC network vs. SNN vs. ResNet on THINGS-fMRI, Spearman RSA against human visual cortex (V1–IT)
-- **nanoGPT Ablation** — GPT depth/head ablation on FineWeb-Edu
-- **Maturaarbeit** — MLP from scratch for Swiss referendum turnout prediction
+- [Predictive Coding RSA](https://github.com/nilsleut/Predictive-Coding-and-the-Visual-Cortex) — PC network vs. SNN vs. ResNet on THINGS-fMRI, Spearman RSA against human visual cortex (V1–IT)
+- [Predictive Coding vs. SNNs](https://github.com/nilsleut/Predictive-Coding-vs.-Spiking-Neural-Networks) — direct comparison of PC and SNN representational geometry against 7T fMRI
+- [nanoGPT Ablation](https://github.com/nilsleut/nanoGPT-Ablation-Study) — GPT depth/head ablation on FineWeb-Edu
+- [Maturaarbeit MLP](https://github.com/nilsleut/Maturaarbeit_NilsLeutenegger) — MLP from scratch for Swiss referendum turnout prediction
 
-The DVS-SNN project bridges the gap between the rate-coded SNN in the RSA project and a more realistic neuromorphic setting where the input itself is spike-based.
+The DVS-SNN project bridges the gap between the rate-coded SNN in the RSA project and a more realistic neuromorphic setting where the input itself is spike-based. The next natural step is a convolutional SNN with local Hebbian learning rules — removing the biologically implausible BPTT in favour of spike-timing-dependent plasticity (STDP).
 
 ---
 
 ## References
 
-Amir, A., et al. (2017). A low power, fully event-based gesture recognition system. *CVPR*.
+Amir, A., et al. (2017). A low power, fully event-based gesture recognition system. *CVPR*. [Paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/Amir_A_Low_Power_CVPR_2017_paper.pdf)
 
-Neftci, E. O., Mostafa, H., & Zenke, F. (2019). Surrogate gradient learning in spiking neural networks. *IEEE Signal Processing Magazine*, 36(6), 51–63.
+Neftci, E. O., Mostafa, H., & Zenke, F. (2019). Surrogate gradient learning in spiking neural networks. *IEEE Signal Processing Magazine*, 36(6), 51–63. [Paper](https://arxiv.org/abs/1901.09948)
 
 Mahowald, M., & Douglas, R. (1991). A silicon neuron. *Nature*, 354(6354), 515–518.
 
+Eshraghian, J. K., et al. (2023). Training spiking neural networks using lessons from deep learning. *Proceedings of the IEEE*. [Paper](https://arxiv.org/abs/2109.12894)
+
 ---
 
-## Author
+## Portfolio
 
-Nils — pre-university project, Switzerland, 2026.
+Part of a NeuroAI research portfolio built before university enrollment:
+[github.com/nilsleut](https://github.com/nilsleut)
